@@ -46,7 +46,16 @@ public class FirePager {
     }
 
 
-    public static <T extends GlobalModel> void loadReviews(IAdapter adapter, List<T> models, int limit, DatabaseReference ref, String childToOrderBy, Class<T> modelClass){
+    /**
+     * Class to load items from the firebase after the last item
+     * @param adapter Any RecyclerView.Adapater that implements IAdapter
+     * @param models List of models to be inserted
+     * @param limit Number of items to fetch from database
+     * @param ref DatabaseReference location : example child("YoLo")
+     * @param childToOrderBy A tag for firebase to order by I suggest all your items having "id" tag
+     * @param modelClass Model class for firebase to put data into for example User.class
+     */
+    public static <T extends GlobalModel> void loadItems(IAdapter adapter, List<T> models, int limit, DatabaseReference ref, String childToOrderBy, Class<T> modelClass){
         if (limit == 0) {
             return;
         }
